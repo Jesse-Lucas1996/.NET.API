@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b8ef2f1d-61c6-4678-9537-cde908f1fcee": {
+      "ProjectGuid": "b8ef2f1d-61c6-4678-9537-cde908f1fcee",
+      "DisplayName": "SandboxAPI",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
