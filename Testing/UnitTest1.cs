@@ -6,7 +6,7 @@ using Xunit;
 namespace Testing
 {
     [CollectionDefinition(nameof(WebAppFixture.WebAppCollection))]
-    public class UnitTest1
+    public class UnitTest1 : IClassFixture<WebAppFixture>
     {
         private readonly IAlbaHost _host;
         public UnitTest1(WebAppFixture fixture)

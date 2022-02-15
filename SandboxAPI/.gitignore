@@ -11,7 +11,7 @@
 *.sln.docstates
 *.dll
 
-*.cache
+*.caches
 *.dll
 *.exe
 *.pdb
