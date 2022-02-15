@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandboxAPI", "SandboxAPI.csproj", "{EB31C4A0-58B8-4507-A2C8-06B42E567A8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "..\Testing\Testing.csproj", "{78186C1D-C9A0-4BFF-B804-4968C665B095}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EB31C4A0-58B8-4507-A2C8-06B42E567A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB31C4A0-58B8-4507-A2C8-06B42E567A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB31C4A0-58B8-4507-A2C8-06B42E567A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78186C1D-C9A0-4BFF-B804-4968C665B095}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78186C1D-C9A0-4BFF-B804-4968C665B095}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78186C1D-C9A0-4BFF-B804-4968C665B095}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78186C1D-C9A0-4BFF-B804-4968C665B095}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
