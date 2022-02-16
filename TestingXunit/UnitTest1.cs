@@ -20,18 +20,8 @@ namespace TestingXunit
             await _alba.Scenario(_ =>
             {
                 _.Get.Url("/WeatherForecast");
-                _.StatusCodeShouldBe(HttpStatusCode.Unauthorized);
-            });
-        }
-        [Fact]
-        public async Task Authorized()
-        {
-            await _alba.Scenario(_ =>
-            {
-                _.Get.Url("/WeatherForecast");
                 _.StatusCodeShouldBe(200);
             });
         }
-
     }
 }
