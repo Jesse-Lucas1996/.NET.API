@@ -18,8 +18,8 @@ builder.Services.AddAuthentication( options =>
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
-    options.Authority = "https://dev-cpt-j07e.au.auth0.com/".ToHttpsUrl();
-    options.Audience = "https://thisisarealapiendpoint.com/".ToHttpsUrl();
+    options.Authority = "".ToHttpsUrl();
+    options.Audience = "".ToHttpsUrl();
     options.TokenValidationParameters = new TokenValidationParameters()
     {
         NameClaimType = ClaimTypes.NameIdentifier
