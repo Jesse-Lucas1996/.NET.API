@@ -15,12 +15,12 @@ namespace TestingXunit
         private readonly IAlbaHost _alba;
 
         [Fact]
-        public async Task UnHappyTask()
+        public async Task TestingTask()
         {
             await _alba.Scenario(_ =>
             {
                 _.Get.Url("/fake/okay");
-                _.StatusCodeShouldBe(500);
+                _.StatusCodeShouldBeOk();
             });
         }
 

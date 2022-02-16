@@ -9,11 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="Alba" Version="6.1.0" />
-    <PackageReference Include="Auth0.ManagementApi" Version="7.12.1" />
+    <PackageReference Include="Auth0.ManagementApi" Version="7.13.0" />
     <PackageReference Include="Auth0Net.DependencyInjection" Version="1.5.0" />
     <PackageReference Include="Grpc.Net.Client.Web" Version="2.42.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Identity.Web" Version="1.22.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.2" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.23.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="xunit" Version="2.4.1" />

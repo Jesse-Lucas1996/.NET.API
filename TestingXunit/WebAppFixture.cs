@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Alba;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
+﻿using Alba;
 using Xunit;
 
 namespace TestingXunit
@@ -17,7 +13,7 @@ namespace TestingXunit
             {
                 builder.ConfigureServices(s =>
                 {
-                    s.AddAuthentication("Auth0");
+                 
                 });
             }, MockJwt.Configuration());
         }
