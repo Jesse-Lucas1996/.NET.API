@@ -14,8 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication( options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = "Auth0";
+    options.DefaultChallengeScheme = "Auth0";
 }).AddJwtBearer("Auth0",options =>
 {
     options.Authority = "https://dev-cpt-j07e.au.auth0.com/".ToHttpsUrl();
