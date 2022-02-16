@@ -15,23 +15,23 @@ namespace TestingXunit
         private readonly IAlbaHost _alba;
 
         [Fact]
-        public async Task TestingTask()
+        public async Task Unauthorized()
         {
             await _alba.Scenario(_ =>
             {
-                _.Get.Url("/fake/okay");
-                _.StatusCodeShouldBeOk();
-            });
-        }
-
-        [Fact]
-        public async Task Auth0GetTokenFail()
-        {
-            await _alba.Scenario(_ =>
-            {
-                _.Post.Url("/https://dev-cpt-j07e.au.auth0.com/oauth/token");
+                _.Get.Url("/WeatherForecast");
                 _.StatusCodeShouldBe(HttpStatusCode.Unauthorized);
             });
         }
+        [Fact]
+        public async Task Authorized()
+        {
+            await _alba.Scenario(_ =>
+            {
+                _.Get.Url("/WeatherForecast");
+                _.StatusCodeShouldBe(200);
+            });
+        }
+
     }
 }

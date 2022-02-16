@@ -1,4 +1,5 @@
 ﻿using Alba;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace TestingXunit
@@ -13,7 +14,6 @@ namespace TestingXunit
             {
                 builder.ConfigureServices(s =>
                 {
-                 
                 });
             }, MockJwt.Configuration());
         }
