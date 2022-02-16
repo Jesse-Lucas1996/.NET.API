@@ -1,7 +1,4 @@
 using Alba;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using System.Xml;
 using SandboxAPI;
 using Xunit;
 
@@ -24,7 +21,18 @@ namespace TestingXunit
                 _.Get.Url("/WeatherForecast");
                 _.StatusCodeShouldBeOk();
             });
-           Assert.IsType<List<WeatherForecast>>(res.ReadAsJson<List<WeatherForecast>>());
+           Assert.IsType<WeatherForecast[]>(res.ReadAsJson<WeatherForecast[]>());
+        }
+
+        [Fact]
+        public async Task Unauthorized()
+        {
+            var res = await _alba.Scenario(_ =>
+            {
+                _.RemoveRequestHeader("authorization");
+                _.Get.Url("/WeatherForecast");
+                _.StatusCodeShouldBe(401);
+            });
         }
     }
 }

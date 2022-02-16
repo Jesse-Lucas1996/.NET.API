@@ -10,12 +10,8 @@ namespace TestingXunit
 
         public async Task InitializeAsync()
         {
-            AlbaHost = await Alba.AlbaHost.For<Program>(builder =>
-            {
-                builder.ConfigureServices(s =>
-                {
-                });
-            }, MockJwt.Configuration());
+            AlbaHost = await Alba.AlbaHost.For<Program>(_ => { }, MockJwt.Configuration());
+
         }
 
         public async Task DisposeAsync()
