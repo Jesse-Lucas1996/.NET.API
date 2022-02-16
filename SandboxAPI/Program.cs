@@ -1,45 +1,37 @@
 using System.Security.Claims;
+using Auth0Net.DependencyInjection.HttpClient;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Identity.Web;
-using SandboxAPI;
-using SandboxAPI.Services;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<UserService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMvc(options =>
-{
-    options.EnableEndpointRouting = false;
-});
 builder.Services.AddAuthentication( options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer("Auth0",options =>
+}).AddJwtBearer(options =>
 {
-    options.Authority = "https://dev-bujpp543.us.auth0.com/";
-    options.Audience = "https://thisisarealapiendpoint.com/";
+    options.Authority = "https://dev-cpt-j07e.au.auth0.com/".ToHttpsUrl();
+    options.Audience = "https://thisisarealapiendpoint.com/".ToHttpsUrl();
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        NameClaimType = ClaimTypes.NameIdentifier
+    };
 });
+
 builder.Services.AddAuthorization(options =>
 {
     options.FallbackPolicy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
         .Build();
-
-    foreach (var scope  in SandboxScopes.Scopes)
-    {
-        options.AddPolicy(scope, p => p.Requirements.Add(new ScopeAuthorizationRequirement()));
-    }
 });
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSingleton<ScopeAuthorizationRequirement>();
 
 builder.Services.AddAuth0AuthenticationClient(config =>
 {
@@ -51,10 +43,11 @@ var MyCors = "MyCors";
 builder.Services.AddAuth0ManagementClient().AddManagementAccessToken();
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyCors,
+    options.AddPolicy(MyCors,
         builder =>
         {
             builder.AllowAnyOrigin();
+            builder.AllowAnyHeader();
         });
 });
 var app = builder.Build();
@@ -72,16 +65,9 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 app.UseCors(MyCors);
-app.UseAuthorization();
 app.UseAuthentication();
-app.UseMvc(routes =>
-{
-    routes.MapRoute(name: "default", 
-        template: "{controller=Home}/{action=Index}/{id?}");
-});
-
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
