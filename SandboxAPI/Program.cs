@@ -14,9 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication( options =>
 {
-    options.DefaultAuthenticateScheme = "Auth0";
-    options.DefaultChallengeScheme = "Auth0";
-}).AddJwtBearer("Auth0",options =>
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
 {
     options.Authority = "https://dev-cpt-j07e.au.auth0.com/".ToHttpsUrl();
     options.Audience = "https://thisisarealapiendpoint.com/".ToHttpsUrl();
@@ -66,9 +66,8 @@ else
 
 app.UseHttpsRedirection();
 app.UseCors(MyCors);
-app.UseAuthorization();
 app.UseAuthentication();
-
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

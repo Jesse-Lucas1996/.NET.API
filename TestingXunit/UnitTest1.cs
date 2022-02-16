@@ -1,6 +1,8 @@
-using System.Net;
-using System.Threading.Tasks;
 using Alba;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System.Xml;
+using SandboxAPI;
 using Xunit;
 
 namespace TestingXunit
@@ -15,13 +17,14 @@ namespace TestingXunit
         private readonly IAlbaHost _alba;
 
         [Fact]
-        public async Task Unauthorized()
+        public async Task Authorized()
         {
-            await _alba.Scenario(_ =>
+           var res = await _alba.Scenario(_ =>
             {
                 _.Get.Url("/WeatherForecast");
-                _.StatusCodeShouldBe(200);
+                _.StatusCodeShouldBeOk();
             });
+           Assert.IsType<List<WeatherForecast>>(res.ReadAsJson<List<WeatherForecast>>());
         }
     }
 }
